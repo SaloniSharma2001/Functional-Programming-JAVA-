@@ -57,3 +57,26 @@ if(b==0) return 0;
 
 `stringLengthCountFunction = (String s) -> s.length();`
 
+Watch lec 8 for lambda basics
+
+Greeting with lambda function:
+`Greeting lambdaGreeting = () -> System.out.println("Hello World");`
+
+Greeting with anonymous class
+
+`Greeting innerClassGreeting = new Greeting(){
+public void perform(){
+System.out.println("Hello World!");
+}};
+innerClassGreeting.perform();`
+
+`public class greet(Greeting greeting){
+greeting.perform();
+}`
+`greeter.greet(lambdaGreeting);
+greeter.greet(innerClassGreeting);
+`
+
+Lambda do use anonymous way to use a class 
+
+
