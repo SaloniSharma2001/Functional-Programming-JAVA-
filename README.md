@@ -77,6 +77,11 @@ greeting.perform();
 greeter.greet(innerClassGreeting);
 `
 
-Lambda do use anonymous way to use a class 
+Lambda do use anonymous way to use a class.
+
+_What is a functional interface?_
+
+In Java 8, we can have methods implemented in interface itself. Now we can have an interface which jave 3 methods out which two of them will have default implementation and one abstract method. Still that interface will have one abstract method
+ 
 
 
