@@ -13,13 +13,13 @@
                 System.out.pritnln("Hello World!");
                 }`
 
-  But lamda doedn't need methods return type or public or the name. It's smart enough for understanding those, it just uses -> expression and line of code
+  But lambda doesn't need methods return type or public or the name. It's smart enough for understanding those, it just uses -> expression and line of code
 
 `aBlockOfCode =() -> {
                 System.out.pritnln("Hello World!");
                 }`
 
-A function without access modifier, name and return type can be representes as lambda expression and can be assigned to a variable as given above.
+A function without access modifier, name and return type can be represented as lambda expression and can be assigned to a variable as given above.
 Now for one line of code we don't need parentheses and hence the above code can be written as 
 
 `aBlockOfCode =() -> System.out.pritnln("Hello World!");`
@@ -46,7 +46,7 @@ Getting rid of return type because compiler will understand it with return state
 We can now remove return statement here as well
 `doubleNumberFunction = (int a)  ->  a * 2;`
 
-It is actually invalid to specidy the return keyword when you have a one-liner lambda expression without {}!
+It is actually invalid to specify the return keyword when you have a one-liner lambda expression without {}!
 
 `addFunction = int(int a , int b) -> a + b;`
 
@@ -82,6 +82,44 @@ Lambda do use anonymous way to use a class.
 _What is a functional interface?_
 
 In Java 8, we can have methods implemented in interface itself. Now we can have an interface which jave 3 methods out which two of them will have default implementation and one abstract method. Still that interface will have one abstract method
- 
+
+**Consumer in functional programming**
+
+How does this work, I have created only one object not even calling the method inside that object still forEach is able to print all of them
+
+`
+//Consumer Interface Implementation
+public class ConsImp implements Consumer<Integer> {
+@Override
+public void accept(Integer value) {
+System.out.println("Iterating on values using consumer: " + value);
+}
+}`
+
+
+`
+//Consumer interface use
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> values = Arrays.asList(4, 5, 6, 7, 8);
+        Consumer<Integer> c = new ConsImp();
+        values.forEach(c);
+    }
+}`
+
+We created a single `Consumer<Integer> object: c = new consImp();`
+Then we called values.forEach(c);<br>
+_The key is that forEach method internally calls the accept() method of the passed Consumer object for each element in the list._
+
+Effectively, values.forEach(c); does something like this behind the scenes:
+
+`for (Integer value : values) {
+c.accept(value);
+}`
+
+So we don’t need to call accept() ourselves. The forEach method iterates over each element, and for each element, it calls accept() on your consImp object.
+
+That's why we see all values printed even though you only created one Consumer object and didn’t directly call accept(). The lambda or Consumer interface pattern delegates the repeated calls to the single accept() method.
+
 
 
